@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 
 const marinas = [
   {
+    slug: "state-park-marina",
     name: "State Park Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
@@ -9,6 +10,7 @@ const marinas = [
       "Boat rentals, fuel, slips, supplies, and convenient lake access.",
   },
   {
+    slug: "indian-point-marina",
     name: "Indian Point Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
@@ -16,6 +18,7 @@ const marinas = [
       "Pontoon rentals, boat slips, fuel, and services near Silver Dollar City.",
   },
   {
+    slug: "port-of-kimberling-marina",
     name: "Port of Kimberling Marina",
     lake: "Table Rock Lake",
     location: "Kimberling City, Missouri",
@@ -23,13 +26,15 @@ const marinas = [
       "Boat rentals, wet slips, fuel, lodging, and full-service marina amenities.",
   },
   {
+    slug: "rock-lane-resort-and-marina",
     name: "Rock Lane Resort and Marina",
     lake: "Table Rock Lake",
     location: "Branson West, Missouri",
     description:
-      "Resort, marina access, boat slips, dining, lodging, and lakefront amenities.",
+      "Resort lodging, marina access, boat slips, dining, and lakefront amenities.",
   },
   {
+    slug: "long-creek-marina",
     name: "Long Creek Marina",
     lake: "Table Rock Lake",
     location: "Ridgedale, Missouri",
@@ -37,6 +42,7 @@ const marinas = [
       "Boat rentals, marina services, fuel, and convenient access to Long Creek.",
   },
   {
+    slug: "the-harbor",
     name: "The Harbor",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
@@ -57,7 +63,7 @@ export default function MarinasPage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            MARINAS
+            Explore local marinas
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-slate-300">
@@ -83,7 +89,7 @@ export default function MarinasPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {marinas.map((marina) => (
             <article
-              key={marina.name}
+              key={marina.slug}
               className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
               <p className="text-sm font-bold text-cyan-600">Marina</p>
@@ -102,9 +108,12 @@ export default function MarinasPage() {
 
               <p className="mt-4 text-slate-600">{marina.description}</p>
 
-              <button className="mt-6 font-bold text-cyan-600">
+              <a
+                href={`/marinas/${marina.slug}`}
+                className="mt-6 inline-block font-bold text-cyan-600"
+              >
                 View marina →
-              </button>
+              </a>
             </article>
           ))}
         </div>
