@@ -5,6 +5,7 @@ const marinaDetails = {
     name: "State Park Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
+    image: "/statepark12.jpg",
     description:
       "Boat rentals, fuel, slips, supplies, and convenient access to Table Rock Lake.",
     services: ["Boat Rentals", "Fuel Dock", "Boat Slips", "Lake Supplies"],
@@ -13,6 +14,7 @@ const marinaDetails = {
     name: "Indian Point Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
+    image: "",
     description:
       "Pontoon rentals, slips, fuel, and marina services near Silver Dollar City.",
     services: ["Pontoon Rentals", "Fuel Dock", "Boat Slips", "Marina Store"],
@@ -21,6 +23,7 @@ const marinaDetails = {
     name: "Port of Kimberling Marina",
     lake: "Table Rock Lake",
     location: "Kimberling City, Missouri",
+    image: "",
     description:
       "Boat rentals, wet slips, fuel, lodging, and full-service marina amenities.",
     services: ["Boat Rentals", "Wet Slips", "Fuel Dock", "Lodging"],
@@ -29,6 +32,7 @@ const marinaDetails = {
     name: "Rock Lane Resort and Marina",
     lake: "Table Rock Lake",
     location: "Branson West, Missouri",
+    image: "",
     description:
       "Resort lodging, marina access, boat slips, dining, and lakefront amenities.",
     services: ["Boat Slips", "Dining", "Lodging", "Lake Access"],
@@ -37,6 +41,7 @@ const marinaDetails = {
     name: "Long Creek Marina",
     lake: "Table Rock Lake",
     location: "Ridgedale, Missouri",
+    image: "",
     description:
       "Boat rentals, fuel, marina services, and convenient access to Long Creek.",
     services: ["Boat Rentals", "Fuel Dock", "Boat Slips", "Marina Services"],
@@ -45,6 +50,7 @@ const marinaDetails = {
     name: "The Harbor",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
+    image: "",
     description:
       "Marina services, boat access, slips, fuel, and nearby lake amenities.",
     services: ["Boat Slips", "Fuel Dock", "Lake Access", "Marina Services"],
@@ -82,11 +88,22 @@ export default async function MarinaDetailPage({
     );
   }
 
+  const heroStyle = marina.image
+    ? {
+        backgroundImage: `linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.7)), url(${marina.image})`,
+      }
+    : undefined;
+
   return (
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 py-24 text-white">
+      <section
+        className={`relative bg-cover bg-center px-6 py-24 text-white ${
+          marina.image ? "" : "bg-slate-950"
+        }`}
+        style={heroStyle}
+      >
         <div className="mx-auto max-w-5xl">
           <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-400">
             {marina.lake}
@@ -128,6 +145,7 @@ export default async function MarinaDetailPage({
           </h2>
 
           <p className="mt-5 text-sm font-bold text-slate-500">LOCATION</p>
+
           <p className="mt-1 text-slate-800">{marina.location}</p>
 
           <button className="mt-7 w-full rounded-xl bg-cyan-500 px-5 py-3 font-bold text-white">
