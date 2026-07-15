@@ -2,25 +2,25 @@ import Navbar from "../components/Navbar";
 
 const businesses = [
   {
-    name: "State Park Marina",
-    category: "Marina & Boat Rentals",
-    lake: "Table Rock Lake",
-    description:
-      "Boat rentals, fuel, slips, supplies, and everything needed for a day on the water.",
-  },
-  {
-    name: "Indian Point Marina",
-    category: "Marina & Boat Rentals",
-    lake: "Table Rock Lake",
-    description:
-      "Pontoon rentals, boat slips, fuel, and convenient access to Table Rock Lake.",
-  },
-  {
     name: "Big Cedar Lodge",
     category: "Resort & Dining",
     lake: "Table Rock Lake",
     description:
       "Lakefront lodging, restaurants, activities, and outdoor experiences.",
+  },
+  {
+    name: "Table Rock Boat & RV Storage",
+    category: "Storage",
+    lake: "Table Rock Lake",
+    description:
+      "Secure boat, trailer, and RV storage near Table Rock Lake.",
+  },
+  {
+    name: "Ozarks Marine Service",
+    category: "Boat Repair & Service",
+    lake: "Table Rock Lake",
+    description:
+      "Local boat repair, maintenance, detailing, and seasonal service.",
   },
 ];
 
@@ -36,12 +36,12 @@ export default function BusinessesPage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Find trusted lake-area businesses
+            DISCOVER LOCAL
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-slate-300">
-            Explore marinas, restaurants, rentals, fishing guides, mechanics,
-            storage facilities, and more.
+            Explore, restaurants, resorts, shops, mechanics,
+            storage facilities, and local services.
           </p>
 
           <div className="mt-8 flex max-w-2xl rounded-2xl bg-white p-2">
