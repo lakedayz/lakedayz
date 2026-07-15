@@ -11,7 +11,7 @@ export default function Navbar() {
         <nav className="hidden md:flex gap-8 text-white font-medium">
           <a href="#">Explore Lakes</a>
           <a href="#">Categories</a>
-          <a href="#">Businesses</a>
+          <a href="vusinesses">Businesses</a>
           <a href="#">Events</a>
         </nav>
 
