@@ -12,7 +12,7 @@ const categories = [
   {
     name: "Restaurants",
     image: "/bell.jpg",
-    href: "/resturants",
+    href: "/restaurants",
   },
   {
     name: "Fishing",
