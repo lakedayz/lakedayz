@@ -1,57 +1,51 @@
 import Navbar from "../components/Navbar";
 
-const marinas = [
+const rentalBusinesses = [
   {
     slug: "state-park-marina",
     name: "State Park Marina",
-    lake: "Table Rock Lake",
     location: "Branson, Missouri",
     description:
-      "Boat rentals, more than 600 slips, scenic lake cruises, a marina store, and lake-day essentials.",
+      "Boat rentals on Table Rock Lake with a variety of options for families, cruising, fishing, and watersports.",
   },
   {
     slug: "indian-point-marina",
     name: "Indian Point Marina",
-    lake: "Table Rock Lake",
     location: "Branson, Missouri",
     description:
-      "A full-service marina with boat rentals, slip rentals, a floating cafe, gas dock, store, and diving center.",
+      "Table Rock Lake boat rentals with convenient access from Indian Point.",
   },
   {
     slug: "port-of-kimberling-marina",
     name: "Port of Kimberling Marina",
-    lake: "Table Rock Lake",
     location: "Kimberling City, Missouri",
     description:
-      "Wet slips, dry-stack storage, transient slips, fuel services, boat rentals, and a ship store.",
+      "Boat rentals and marina services with direct access to Table Rock Lake.",
   },
   {
     slug: "long-creek-marina",
     name: "Long Creek Marina",
-    lake: "Table Rock Lake",
     location: "Ridgedale, Missouri",
     description:
-      "A full-service marina open to the public with boat and watercraft rentals, fishing services, guides, and water activities.",
+      "Boat and watercraft rentals with access to the southern side of Table Rock Lake.",
   },
   {
     slug: "rock-lane-resort-and-marina",
-    name: "Rock Lane Resort and Marina",
-    lake: "Table Rock Lake",
-    location: "Branson, Missouri",
+    name: "Rock Lane Resort & Marina",
+    location: "Branson West, Missouri",
     description:
-      "A lakefront resort and marina offering boat rentals, nightly and long-term slip rentals, dining, and lodging.",
+      "Boat rentals and marina services with convenient access to Table Rock Lake.",
   },
   {
-    slug: "cricket-creek-marina",
-    name: "Cricket Creek Marina",
-    lake: "Table Rock Lake",
-    location: "Omaha, Arkansas",
+    slug: "baxter-marina",
+    name: "Baxter Marina",
+    location: "Table Rock Lake, Missouri",
     description:
-      "A full-service marina offering boat rentals, slip rentals, fuel, lake supplies, and access to the southern end of Table Rock Lake.",
+      "Pontoon rentals and marina access for exploring Table Rock Lake.",
   },
 ];
 
-export default function MarinasPage() {
+export default function BoatRentalsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <Navbar />
@@ -59,22 +53,21 @@ export default function MarinasPage() {
       <section className="bg-slate-950 px-6 py-20 text-white">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-400">
-            LakeDayz Marina Directory
+            LakeDayz Rental Directory
           </p>
 
           <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            MARINAS
+            BOAT RENTALS
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-slate-300">
-            Find boat rentals, fuel docks, slips, supplies, and marina services
-            around your favorite lake.
+            Find boat rentals and marina rental services around Table Rock Lake.
           </p>
 
           <div className="mt-8 flex max-w-2xl rounded-2xl bg-white p-2">
             <input
               type="text"
-              placeholder="Search marinas..."
+              placeholder="Search boat rentals..."
               className="min-w-0 flex-1 px-4 text-slate-900 outline-none"
             />
 
@@ -87,32 +80,32 @@ export default function MarinasPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {marinas.map((marina) => (
+          {rentalBusinesses.map((business) => (
             <article
-              key={marina.slug}
+              key={business.slug}
               className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <p className="text-sm font-bold text-cyan-600">Marina</p>
+              <p className="text-sm font-bold text-cyan-600">
+                Boat Rental
+              </p>
 
               <h2 className="mt-3 text-2xl font-black text-slate-900">
-                {marina.name}
+                {business.name}
               </h2>
 
               <p className="mt-2 text-sm font-semibold text-slate-500">
-                {marina.lake}
+                {business.location}
               </p>
 
-              <p className="mt-1 text-sm text-slate-500">
-                {marina.location}
+              <p className="mt-4 text-slate-600">
+                {business.description}
               </p>
-
-              <p className="mt-4 text-slate-600">{marina.description}</p>
 
               <a
-                href={`/marinas/${marina.slug}`}
+                href={`/boat-rentals/${business.slug}`}
                 className="mt-6 inline-block font-bold text-cyan-600"
               >
-                View marina →
+                View rental →
               </a>
             </article>
           ))}

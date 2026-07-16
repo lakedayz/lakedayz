@@ -1,47 +1,64 @@
 const categories = [
-  "Boat Rentals",
-  "Marinas",
-  "Restaurants",
-  "Fuel Docks",
-  "Fishing Guides",
-  "Events",
+  {
+    name: "Boat Rentals",
+    image: "/boatrental.jpg",
+    href: "/boat-rentals",
+  },
+  {
+    name: "Marinas",
+    image: "/dock.jpg",
+    href: "/marinas",
+  },
+  {
+    name: "Restaurants",
+    image: "/bell.jpg",
+    href: "/resturants",
+  },
+  {
+    name: "Fishing",
+    image: "/Fishing_reel.jpg",
+    href: "/fishing",
+  },
+  {
+    name: "Events",
+    image: "/map.jpg",
+    href: "events",
+  },
+  {
+    name: "Fuel Docks",
+    image: "/gas.jpg",
+    href: "fuel-docks",
+  },
 ];
 
 export default function Categories() {
   return (
-    <section className="bg-slate-50 px-6 py-20">
-      <div className="mx-auto max-w-7xl">
-        <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-600">
+    <section className="bg-slate-50 py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <h2 className="text-4xl font-bold text-slate-900">
           Explore LakeDayz
-        </p>
-
-        <h2 className="mt-3 text-4xl font-black text-slate-900">
-          Find what you need
         </h2>
 
-        <p className="mt-4 max-w-2xl text-slate-600">
-          Discover rentals, marinas, restaurants, fishing guides, events, and
-          everything else you need for a great day on the water.
+        <p className="mb-10 mt-3 text-slate-600">
+          Everything you need for the perfect day on the water.
         </p>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
           {categories.map((category) => (
-            <div
-              key={category}
-              className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            <a
+              key={category.name}
+              href={category.href}
+              className="relative min-h-[220px] overflow-hidden rounded-3xl bg-cover bg-center shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              style={{
+                backgroundImage: `linear-gradient(rgba(2, 6, 23, 0.35), rgba(2, 6, 23, 0.65)), url(${category.image})`,
+              }}
             >
-              <h3 className="text-xl font-bold text-slate-900">
-                {category}
-              </h3>
-
-              <p className="mt-3 text-slate-600">
-                Explore trusted local options around the lake.
-              </p>
-
-              <button className="mt-6 font-bold text-cyan-600">
-                Explore category →
-              </button>
-            </div>
+              <div className="absolute inset-0 flex items-end p-6">
+                <h3 className="text-2xl font-bold text-white">
+                  {category.name}
+                </h3>
+              </div>
+            </a>
           ))}
         </div>
       </div>

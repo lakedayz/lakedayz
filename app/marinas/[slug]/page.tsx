@@ -7,53 +7,58 @@ const marinaDetails = {
     location: "Branson, Missouri",
     image: "/statepark12.jpg",
     description:
-      "Boat rentals, fuel, slips, supplies, and convenient access to Table Rock Lake.",
-    services: ["Boat Rentals", "Fuel Dock", "Boat Slips", "Lake Supplies"],
+      "Boat rentals, slips, scenic lake cruises, a marina store, and lake-day essentials.",
+    services: ["Boat Rentals", "Boat Slips", "Lake Cruises", "Marina Store"],
   },
+
   "indian-point-marina": {
     name: "Indian Point Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
     image: "",
     description:
-      "Pontoon rentals, slips, fuel, and marina services near Silver Dollar City.",
-    services: ["Pontoon Rentals", "Fuel Dock", "Boat Slips", "Marina Store"],
+      "A full-service marina with boat rentals, slip rentals, a floating cafe, gas dock, store, and diving center.",
+    services: ["Boat Rentals", "Boat Slips", "Fuel Dock", "Floating Cafe"],
   },
+
   "port-of-kimberling-marina": {
     name: "Port of Kimberling Marina",
     lake: "Table Rock Lake",
     location: "Kimberling City, Missouri",
     image: "",
     description:
-      "Boat rentals, wet slips, fuel, lodging, and full-service marina amenities.",
-    services: ["Boat Rentals", "Wet Slips", "Fuel Dock", "Lodging"],
+      "Wet slips, dry-stack storage, transient slips, fuel services, boat rentals, and a ship store.",
+    services: ["Boat Rentals", "Wet Slips", "Fuel Dock", "Ship Store"],
   },
-  "rock-lane-resort-and-marina": {
-    name: "Rock Lane Resort and Marina",
-    lake: "Table Rock Lake",
-    location: "Branson West, Missouri",
-    image: "",
-    description:
-      "Resort lodging, marina access, boat slips, dining, and lakefront amenities.",
-    services: ["Boat Slips", "Dining", "Lodging", "Lake Access"],
-  },
+
   "long-creek-marina": {
     name: "Long Creek Marina",
     lake: "Table Rock Lake",
     location: "Ridgedale, Missouri",
-    image: "",
+    image: "/longcreek.jpg",
     description:
-      "Boat rentals, fuel, marina services, and convenient access to Long Creek.",
-    services: ["Boat Rentals", "Fuel Dock", "Boat Slips", "Marina Services"],
+      "A full-service marina open to the public with boat and watercraft rentals, fishing services, guides, and water activities.",
+    services: ["Boat Rentals", "Fishing Services", "Guides", "Water Activities"],
   },
-  "the-harbor": {
-    name: "The Harbor",
+
+  "rock-lane-resort-and-marina": {
+    name: "Rock Lane Resort and Marina",
     lake: "Table Rock Lake",
     location: "Branson, Missouri",
+    image: "/rockl.jpg",
+    description:
+      "A lakefront resort and marina offering boat rentals, nightly and long-term slip rentals, dining, and lodging.",
+    services: ["Boat Rentals", "Boat Slips", "Dining", "Lodging"],
+  },
+
+  "cricket-creek-marina": {
+    name: "Cricket Creek Marina",
+    lake: "Table Rock Lake",
+    location: "Omaha, Arkansas",
     image: "",
     description:
-      "Marina services, boat access, slips, fuel, and nearby lake amenities.",
-    services: ["Boat Slips", "Fuel Dock", "Lake Access", "Marina Services"],
+      "A full-service marina offering boat rentals, slip rentals, fuel, lake supplies, and access to the southern end of Table Rock Lake.",
+    services: ["Boat Rentals", "Boat Slips", "Fuel Dock", "Lake Supplies"],
   },
 };
 
@@ -148,9 +153,16 @@ export default async function MarinaDetailPage({
 
           <p className="mt-1 text-slate-800">{marina.location}</p>
 
-          <button className="mt-7 w-full rounded-xl bg-cyan-500 px-5 py-3 font-bold text-white">
-            Get directions
-          </button>
+          <a
+  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${marina.name}, ${marina.location}`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-7 block w-full rounded-xl bg-cyan-500 px-5 py-3 text-center font-bold text-white"
+>
+  Get directions
+</a>
 
           <a
             href="/marinas"
