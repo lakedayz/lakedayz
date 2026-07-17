@@ -1,25 +1,47 @@
 import Navbar from "../components/Navbar";
 
-const fuelDockOptions = [
+const fuelDocks = [
   {
-    name: "Marine Fuel",
+    slug: "state-park-marina",
+    name: "State Park Marina",
+    location: "Branson, Missouri",
     description:
-      "Find fuel docks around the lake so you can refuel quickly and get back on the water.",
+      "Fuel dock access, marina services, supplies, and convenient refueling on Table Rock Lake.",
   },
   {
-    name: "Convenience Stores",
+    slug: "indian-point-marina",
+    name: "Indian Point Marina",
+    location: "Branson, Missouri",
     description:
-      "Find marina stores with drinks, snacks, ice, supplies, and other lake-day essentials.",
+      "Gas dock, marina store, boat services, and easy fuel access near Indian Point.",
   },
   {
-    name: "Boat Supplies",
+    slug: "port-of-kimberling-marina",
+    name: "Port of Kimberling Marina",
+    location: "Kimberling City, Missouri",
     description:
-      "Discover nearby fuel docks that also carry boating supplies, accessories, and basic equipment.",
+      "Marine fuel, marina services, rentals, supplies, and convenient access from Table Rock Lake.",
   },
   {
-    name: "On-Water Stops",
+    slug: "rock-lane-resort-and-marina",
+    name: "Rock Lane Resort & Marina",
+    location: "Branson West, Missouri",
     description:
-      "Find convenient places to stop for fuel and supplies without leaving the lake.",
+      "Fuel access and marina services at a lakefront resort on Table Rock Lake.",
+  },
+  {
+    slug: "cricket-creek-marina",
+    name: "Cricket Creek Marina",
+    location: "Omaha, Arkansas",
+    description:
+      "Marine fuel, lake supplies, boat services, and access to the southern end of Table Rock Lake.",
+  },
+  {
+    slug: "long-creek-marina",
+    name: "Long Creek Marina",
+    location: "Ridgedale, Missouri",
+    description:
+      "Fuel and marina services with convenient access to the Long Creek area of Table Rock Lake.",
   },
 ];
 
@@ -39,8 +61,8 @@ export default function FuelDocksPage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-slate-300">
-            Find marine fuel, lake supplies, convenience stores, and on-water
-            stops around the lake.
+            Find fuel docks, marina services, and convenient places to refuel
+            around Table Rock Lake.
           </p>
 
           <div className="mt-8 flex max-w-2xl rounded-2xl bg-white p-2">
@@ -58,10 +80,10 @@ export default function FuelDocksPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {fuelDockOptions.map((option) => (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {fuelDocks.map((dock) => (
             <article
-              key={option.name}
+              key={dock.slug}
               className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
               <p className="text-sm font-bold text-cyan-600">
@@ -69,16 +91,23 @@ export default function FuelDocksPage() {
               </p>
 
               <h2 className="mt-3 text-2xl font-black text-slate-900">
-                {option.name}
+                {dock.name}
               </h2>
 
-              <p className="mt-4 text-slate-600">
-                {option.description}
+              <p className="mt-2 text-sm font-semibold text-slate-500">
+                {dock.location}
               </p>
 
-              <button className="mt-6 font-bold text-cyan-600">
-                Explore →
-              </button>
+              <p className="mt-4 text-slate-600">
+                {dock.description}
+              </p>
+
+              <a
+                href={`/fuel-docks/${dock.slug}`}
+                className="mt-6 inline-block font-bold text-cyan-600"
+              >
+                View fuel dock →
+              </a>
             </article>
           ))}
         </div>
