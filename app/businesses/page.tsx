@@ -1,26 +1,95 @@
 import Navbar from "../components/Navbar";
-
 const businesses = [
   {
-    name: "Big Cedar Lodge",
-    category: "Resort & Dining",
+    name: "The Harbor",
+    category: "Boat Sales & Service",
     lake: "Table Rock Lake",
     description:
-      "Lakefront lodging, restaurants, activities, and outdoor experiences.",
+      "New and used boat sales, marine service, parts, and support for Table Rock Lake boaters.",
   },
   {
-    name: "Table Rock Boat & RV Storage",
-    category: "Storage",
+    name: "Cope Marine",
+    category: "Boat Sales & Service",
     lake: "Table Rock Lake",
     description:
-      "Secure boat, trailer, and RV storage near Table Rock Lake.",
+      "Boat dealership offering new and used boats, marine service, parts, and boating support.",
   },
   {
-    name: "Ozarks Marine Service",
-    category: "Boat Repair & Service",
+    name: "Branson West Marine and Powersports",
+    category: "Boat Sales & Service",
     lake: "Table Rock Lake",
     description:
-      "Local boat repair, maintenance, detailing, and seasonal service.",
+      "Boat sales, marine service, parts, and powersports serving the Table Rock Lake area.",
+  },
+  {
+    name: "Ulrich Marine Center",
+    category: "Boat Sales & Service",
+    lake: "Table Rock Lake",
+    description:
+      "Longtime local marine dealer offering new and used boats, parts, and professional service.",
+  },
+  {
+    name: "Premier Boat Sales and Service",
+    category: "Boat Sales & Service",
+    lake: "Table Rock Lake",
+    description:
+      "Boat sales and marine service serving boaters throughout the Table Rock Lake area.",
+  },
+  {
+    name: "American Water Sports",
+    category: "Boat Sales & Watersports",
+    lake: "Table Rock Lake",
+    description:
+      "Boat and watersports sales serving Kimberling City and the surrounding lake community.",
+  },
+  {
+    name: "Dyna Prop",
+    category: "Marine Parts & Service",
+    lake: "Table Rock Lake",
+    description:
+      "Marine parts and propeller support serving boat owners around Table Rock Lake.",
+  },
+  {
+    name: "Extreme Outdoors",
+    category: "Fishing & Outdoor Retail",
+    lake: "Table Rock Lake",
+    description:
+      "Fishing tackle, gear, live bait, and outdoor supplies for anglers visiting Table Rock Lake.",
+  },
+  {
+    name: "Anglers Obsession Guide Service",
+    category: "Fishing Guide",
+    lake: "Table Rock Lake",
+    description:
+      "Professional guided fishing trips for anglers looking to experience Table Rock Lake.",
+  },
+  {
+    name: "Bearded Boat Captain",
+    category: "Boat Captain Service",
+    lake: "Table Rock Lake",
+    description:
+      "Licensed captain services for rental boats, private boats, families, groups, and lake days.",
+  },
+  {
+    name: "Hooked on Branson Fishing",
+    category: "Fishing Guide",
+    lake: "Table Rock Lake",
+    description:
+      "Year-round guided fishing trips on Table Rock Lake and other nearby Ozarks waters.",
+  },
+  {
+    name: "Mike Boyles Fishing",
+    category: "Fishing Guide",
+    lake: "Table Rock Lake",
+    description:
+      "Guided fishing trips for anglers of all experience levels on Table Rock Lake.",
+  },
+  {
+    name: "OzarkAnglers.com",
+    category: "Fishing Resource",
+    lake: "Table Rock Lake",
+    description:
+      "Local fishing information and resources for recreational and tournament anglers.",
   },
 ];
 
