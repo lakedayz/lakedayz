@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const quickLinks = [
   "Boat Rentals",
@@ -9,12 +12,46 @@ const quickLinks = [
   "Events",
 ];
 
+type LakeConditions = {
+  weather: string;
+  airTemp: number;
+  waterTemp: number;
+  lakeLevel: number;
+  wind: string;
+  updatedAt: string;
+};
+
 export default function Hero() {
+  const [conditions, setConditions] = useState<LakeConditions>({
+    weather: "Loading...",
+    airTemp: 0,
+    waterTemp: 0,
+    lakeLevel: 0,
+    wind: "Loading...",
+    updatedAt: "",
+  });
+
+  useEffect(() => {
+    fetch("/api/lake-conditions")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load lake conditions");
+        }
+
+        return response.json();
+      })
+      .then((data: LakeConditions) => {
+        setConditions(data);
+      })
+      .catch((error) => {
+        console.error("Failed to load lake conditions:", error);
+      });
+  }, []);
+
   return (
     <section className="relative min-h-screen overflow-hidden text-white">
       <Image
         src="/tablerock.jpg"
-
         alt="Aerial view of Table Rock Lake"
         fill
         priority
@@ -24,6 +61,40 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/30 to-slate-950/25" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-slate-950/20" />
+
+      <div className="absolute right-6 top-24 z-20 hidden rounded-2xl border border-white/20 bg-slate-950/55 p-4 text-white shadow-2xl backdrop-blur-md md:block">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
+          Table Rock Lake Conditions
+        </p>
+
+        <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          <div>
+            <p className="text-slate-300">Weather</p>
+            <p className="font-bold">
+              {conditions.airTemp}°F · {conditions.weather}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-slate-300">Water Temp</p>
+            <p className="font-bold">{conditions.waterTemp}°F</p>
+          </div>
+
+          <div>
+            <p className="text-slate-300">Lake Level</p>
+            <p className="font-bold">{conditions.lakeLevel} ft</p>
+          </div>
+
+          <div>
+            <p className="text-slate-300">Wind</p>
+            <p className="font-bold">{conditions.wind}</p>
+          </div>
+        </div>
+
+        <p className="mt-3 text-xs text-slate-400">
+          Updated recently
+        </p>
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28">
         <div className="max-w-4xl">
@@ -42,7 +113,7 @@ export default function Hero() {
             water.
           </p>
 
-          <div className="mt-10 max-w-3xl rounded-3xl border border-white/20 bg-white/15 p-2 shadow-2xl backdrop-blur-xl">
+          <div className="mt-10 max-w-3xl rounded-3xl border border-white/20 bg-white/15 p-2 shadow-2xl backdrop-blur">
             <div className="flex flex-col gap-2 sm:flex-row">
               <input
                 type="text"
@@ -60,7 +131,7 @@ export default function Hero() {
             {quickLinks.map((link) => (
               <button
                 key={link}
-                className="rounded-full border border-white/20 bg-slate-950/30 px-4 py-2 text-sm font-bold backdrop-blur-md transition hover:border-cyan-300 hover:bg-slate-950/50"
+                className="rounded-full border border-white/20 bg-slate-950/45 px-4 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-slate-950/70"
               >
                 {link}
               </button>
