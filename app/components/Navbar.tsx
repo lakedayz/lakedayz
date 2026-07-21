@@ -7,30 +7,47 @@ export default function Navbar() {
   const isHome = pathname === "/";
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto flex items-start justify-between px-6 pt-4">
-        <a href="/">
+    <header className="absolute left-0 top-0 z-50 w-full">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
+        {/* Logo */}
+        <a href="/" className="shrink-0">
           <img
             src="/logo-white.png"
             alt="LakeDayz"
             className={
               isHome
-                ? "h-36 w-36 object-contain"
-                : "h-24 w-24 object-contain -mt-8"
+                ? "h-20 w-20 object-contain md:h-28 md:w-28"
+                : "h-16 w-16 object-contain md:h-20 md:w-20"
             }
           />
         </a>
 
-        <nav className="hidden md:flex gap-8 text-white font-medium">
-          <a href="/marinas">Marinas</a>
-          <a href="/categories">Categories</a>
-          <a href="/businesses">Businesses</a>
-          <a href="/events">Events</a>
+        {/* Desktop navigation */}
+        <nav className="hidden items-center gap-8 text-sm font-semibold text-white md:flex">
+          <a href="/marinas" className="transition hover:text-cyan-300">
+            Marinas
+          </a>
+
+          <a href="/boat-rentals" className="transition hover:text-cyan-300">
+            Categories
+          </a>
+
+          <a href="/businesses" className="transition hover:text-cyan-300">
+            Businesses
+          </a>
+
+          <a href="/events" className="transition hover:text-cyan-300">
+            Events
+          </a>
         </nav>
 
-        <button className="rounded-full bg-cyan-500 px-5 py-2 text-white font-semibold hover:bg-cyan-400 transition">
+        {/* List business button */}
+        <a
+          href="/businesses"
+          className="rounded-full bg-cyan-500 px-5 py-3 text-sm font-black text-white shadow-lg transition hover:bg-cyan-400 md:px-7 md:py-3"
+        >
           List Your Business
-        </button>
+        </a>
       </div>
     </header>
   );
