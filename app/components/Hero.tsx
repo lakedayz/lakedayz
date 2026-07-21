@@ -14,9 +14,9 @@ const quickLinks = [
 
 type LakeConditions = {
   weather: string;
-  airTemp: number;
-  waterTemp: number;
-  lakeLevel: number;
+  airTemp: number | null;
+  waterTemp: number | null;
+  lakeLevel: number | null;
   wind: string;
   updatedAt: string;
 };
@@ -24,9 +24,9 @@ type LakeConditions = {
 export default function Hero() {
   const [conditions, setConditions] = useState<LakeConditions>({
     weather: "Loading...",
-    airTemp: 0,
-    waterTemp: 0,
-    lakeLevel: 0,
+    airTemp: null,
+    waterTemp: null,
+    lakeLevel: null,
     wind: "Loading...",
     updatedAt: "",
   });
@@ -62,27 +62,40 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/30 to-slate-950/25" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-slate-950/20" />
 
-      <div className="absolute right-6 top-24 z-20 hidden rounded-2xl border border-white/20 bg-slate-950/55 p-4 text-white shadow-2xl backdrop-blur-md md:block">
+      {/* Lake conditions */}
+      <div className="absolute left-6 right-6 top-32 z-20 rounded-2xl border border-white/20 bg-slate-950/70 p-4 text-white shadow-2xl backdrop-blur-md md:left-auto md:right-6 md:top-24 md:w-80">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
           Table Rock Lake Conditions
         </p>
 
-        <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+        <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
           <div>
             <p className="text-slate-300">Weather</p>
             <p className="font-bold">
-              {conditions.airTemp}°F · {conditions.weather}
+              {conditions.airTemp !== null
+                ? `${conditions.airTemp}°F`
+                : "--"}
+              {" · "}
+              {conditions.weather}
             </p>
           </div>
 
           <div>
             <p className="text-slate-300">Water Temp</p>
-            <p className="font-bold">{conditions.waterTemp}°F</p>
+            <p className="font-bold">
+              {conditions.waterTemp !== null
+                ? `${conditions.waterTemp}°F`
+                : "--"}
+            </p>
           </div>
 
           <div>
             <p className="text-slate-300">Lake Level</p>
-            <p className="font-bold">{conditions.lakeLevel} ft</p>
+            <p className="font-bold">
+              {conditions.lakeLevel !== null
+                ? `${conditions.lakeLevel} ft`
+                : "--"}
+            </p>
           </div>
 
           <div>
@@ -91,12 +104,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <p className="mt-3 text-xs text-slate-400">
-          Updated recently
-        </p>
+        <p className="mt-3 text-xs text-slate-400">Updated recently</p>
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-28 pt-[28rem] md:py-28">
         <div className="max-w-4xl">
           <p className="mb-5 text-sm font-black uppercase tracking-[0.35em] text-cyan-300">
             Explore. Book. Enjoy.
