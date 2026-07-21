@@ -16,8 +16,8 @@ export default function Navbar() {
             alt="LakeDayz"
             className={
               isHome
-                ? "h-20 w-20 object-contain md:h-28 md:w-28"
-                : "h-16 w-16 object-contain md:h-20 md:w-20"
+                ? "h-40 w-40 object-contain md:h-32 md:w-32"
+                : "h-24 w-24 object-contain md:h-24 md:w-24"
             }
           />
         </a>
