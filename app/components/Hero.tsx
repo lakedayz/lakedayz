@@ -3,14 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const quickLinks = [
-  "Boat Rentals",
-  "Marinas",
-  "Restaurants",
-  "Fuel Prices",
-  "Fishing",
-  "Events",
-];
+
 
 type LakeConditions = {
   weather: string;
@@ -140,16 +133,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            {quickLinks.map((link) => (
-              <button
-                key={link}
-                className="rounded-full border border-white/20 bg-slate-950/45 px-4 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-slate-950/70"
-              >
-                {link}
-              </button>
-            ))}
-          </div>
+         
         </div>
       </div>
     </section>
