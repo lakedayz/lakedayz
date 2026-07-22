@@ -1,95 +1,103 @@
 import Navbar from "../components/Navbar";
+
 const businesses = [
   {
-    name: "The Harbor",
-    category: "Boat Sales & Service",
-    lake: "Table Rock Lake",
+    name: "Dan's Marine Service",
+    type: "Marine Service & Repair",
+    location: "Kimberling City, Missouri",
     description:
-      "New and used boat sales, marine service, parts, and support for Table Rock Lake boaters.",
+      "Complete marine service and repair serving Table Rock Lake, including mechanical and electrical systems, diagnostics, fiberglass and gel coat repair, bottom painting, welding, winterization, and other marine services.",
+    website: "https://dansmarinetablerock.com/",
+  },
+  {
+    name: "Ulrich Marine",
+    type: "Marine Service, Repair & Storage",
+    location: "Branson West, Missouri",
+    description:
+      "A longtime Table Rock Lake marine business offering factory-certified boat service and repair, boat and RV storage, warranty work, winterization, and on-site boat detailing.",
+    website: "https://www.ulrichmarine.com/",
   },
   {
     name: "Cope Marine",
-    category: "Boat Sales & Service",
-    lake: "Table Rock Lake",
+    type: "Boat Sales, Service & Storage",
+    location: "Branson West, Missouri",
     description:
-      "Boat dealership offering new and used boats, marine service, parts, and boating support.",
-  },
-  {
-    name: "Branson West Marine and Powersports",
-    category: "Boat Sales & Service",
-    lake: "Table Rock Lake",
-    description:
-      "Boat sales, marine service, parts, and powersports serving the Table Rock Lake area.",
-  },
-  {
-    name: "Ulrich Marine Center",
-    category: "Boat Sales & Service",
-    lake: "Table Rock Lake",
-    description:
-      "Longtime local marine dealer offering new and used boats, parts, and professional service.",
-  },
-  {
-    name: "Premier Boat Sales and Service",
-    category: "Boat Sales & Service",
-    lake: "Table Rock Lake",
-    description:
-      "Boat sales and marine service serving boaters throughout the Table Rock Lake area.",
+      "A full-service boat dealership offering new and pre-owned boats, mechanical and electrical service, fiberglass repair, parts, storage, winterization, and marine upgrades.",
+    website: "https://www.copemarine.com/",
   },
   {
     name: "American Water Sports",
-    category: "Boat Sales & Watersports",
-    lake: "Table Rock Lake",
+    type: "Boat Sales, Service & Storage",
+    location: "Kimberling City & Shell Knob, Missouri",
     description:
-      "Boat and watersports sales serving Kimberling City and the surrounding lake community.",
+      "A Table Rock Lake-area boat dealership with locations in Kimberling City and Shell Knob offering boat sales, service, winterization, parts, and storage.",
+    website: "https://americanwatersports.com/",
+  },
+  {
+    name: "The Harbor",
+    type: "Boat Sales & Marine Service",
+    location: "Branson / Table Rock Lake",
+    description:
+      "A major Table Rock Lake marine dealership offering new and pre-owned boats, parts, warranties, professional service, and lakefront sales locations.",
+    website: "https://www.theharbor.com/",
+  },
+  {
+    name: "Toons Table Rock",
+    type: "Boat Sales, Electronics & Service",
+    location: "Shell Knob, Missouri",
+    description:
+      "A Table Rock Lake-area boat business offering pontoon, tritoon, and fishing boat sales along with service, parts, marine electronics sales, installation, and repair.",
+    website: "https://toonstablerock.com/",
   },
   {
     name: "Dyna Prop",
-    category: "Marine Parts & Service",
-    lake: "Table Rock Lake",
+    type: "Propeller & Boat Repair",
+    location: "Table Rock Lake Area",
     description:
-      "Marine parts and propeller support serving boat owners around Table Rock Lake.",
+      "A family-operated marine service business serving Table Rock Lake with propeller services, boat repair, parts, accessories, and other boating needs.",
+    website:
+      "https://business.visittablerocklake.com/list/member/dyna-prop-inc-134965",
   },
   {
-    name: "Extreme Outdoors",
-    category: "Fishing & Outdoor Retail",
-    lake: "Table Rock Lake",
+    name: "D&R Dock Builders",
+    type: "Dock Construction & Repair",
+    location: "Reeds Spring, Missouri",
     description:
-      "Fishing tackle, gear, live bait, and outdoor supplies for anglers visiting Table Rock Lake.",
+      "A local dock company serving the Table Rock Lake area with dock construction, repairs, modifications, and other waterfront dock services.",
+    website: "https://dandrdock.com/",
   },
   {
-    name: "Anglers Obsession Guide Service",
-    category: "Fishing Guide",
-    lake: "Table Rock Lake",
+    name: "James River Dock Services",
+    type: "Dock Construction & Service",
+    location: "Table Rock Lake, Missouri",
     description:
-      "Professional guided fishing trips for anglers looking to experience Table Rock Lake.",
+      "A full-service dock manufacturer and service company providing new dock construction, repairs, custom modifications, and commercial marina dock projects around Table Rock Lake.",
+    website: "https://jamesriverdockservices.com/",
   },
   {
-    name: "Bearded Boat Captain",
-    category: "Boat Captain Service",
-    lake: "Table Rock Lake",
+    name: "Top Shelf Boat Lifts",
+    type: "Boat Lift Sales & Service",
+    location: "Kimberling City Area, Missouri",
     description:
-      "Licensed captain services for rental boats, private boats, families, groups, and lake days.",
+      "A Table Rock Lake-area boat lift specialist offering boat lift installation, repair, relocation, modification, trade-ins, and dock upgrades.",
+    website:
+      "https://business.visittablerocklake.com/list/member/top-shelf-boat-lifts-137145",
   },
   {
-    name: "Hooked on Branson Fishing",
-    category: "Fishing Guide",
-    lake: "Table Rock Lake",
+    name: "Fitzco Marine Group",
+    type: "Dock Construction & Boat Lifts",
+    location: "Table Rock Lake",
     description:
-      "Year-round guided fishing trips on Table Rock Lake and other nearby Ozarks waters.",
+      "A marine construction company serving Table Rock Lake with custom dock construction, dock repairs, waterfront projects, and boat lift solutions.",
+    website: "https://fitzcomarine.com/missouri/table-rock-lake",
   },
   {
-    name: "Mike Boyles Fishing",
-    category: "Fishing Guide",
-    lake: "Table Rock Lake",
+    name: "Poly Lift Boat Lifts",
+    type: "Boat Lift Sales & Service",
+    location: "Serving Table Rock Lake",
     description:
-      "Guided fishing trips for anglers of all experience levels on Table Rock Lake.",
-  },
-  {
-    name: "OzarkAnglers.com",
-    category: "Fishing Resource",
-    lake: "Table Rock Lake",
-    description:
-      "Local fishing information and resources for recreational and tournament anglers.",
+      "A longtime boat lift company providing lift systems and service for boat owners on Table Rock Lake and other Missouri lakes.",
+    website: "https://www.polylift.com/",
   },
 ];
 
@@ -98,61 +106,70 @@ export default function BusinessesPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 py-20 text-white">
+      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-400">
-            LakeDayz Business Directory
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
+            Discover Local
           </p>
 
           <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            DISCOVER LOCAL
+            Find Trusted Lake Businesses
           </h1>
 
-          <p className="mt-5 max-w-2xl text-lg text-slate-300">
-            Explore, restaurants, resorts, shops, mechanics,
-            storage facilities, and local services.
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+            Find boat repair, marine service, boat sales, storage, propeller
+            repair, dock builders, boat lift companies, and other businesses
+            serving the Table Rock Lake community.
           </p>
-
-          <div className="mt-8 flex max-w-2xl rounded-2xl bg-white p-2">
-            <input
-              type="text"
-              placeholder="Search businesses..."
-              className="min-w-0 flex-1 px-4 text-slate-900 outline-none"
-            />
-
-            <button className="rounded-xl bg-cyan-500 px-6 py-3 font-bold text-white">
-              Search
-            </button>
-          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {businesses.map((business) => (
-            <article
-              key={business.name}
-              className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-            >
-              <p className="text-sm font-bold text-cyan-600">
-                {business.category}
-              </p>
+      <section className="px-6 py-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8">
+            <h2 className="text-3xl font-black text-slate-950">
+              Local Services Around Table Rock Lake
+            </h2>
 
-              <h2 className="mt-3 text-2xl font-black text-slate-900">
-                {business.name}
-              </h2>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+              Browse trusted businesses serving boat owners, lake homeowners,
+              visitors, and the Table Rock Lake community.
+            </p>
+          </div>
 
-              <p className="mt-2 text-sm font-semibold text-slate-500">
-                {business.lake}
-              </p>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {businesses.map((business) => (
+              <div
+                key={business.name}
+                className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-500">
+                  {business.type}
+                </p>
 
-              <p className="mt-4 text-slate-600">{business.description}</p>
+                <h2 className="mt-3 text-2xl font-black text-slate-950">
+                  {business.name}
+                </h2>
 
-              <button className="mt-6 font-bold text-cyan-600">
-                View business →
-              </button>
-            </article>
-          ))}
+                <p className="mt-2 font-semibold text-slate-500">
+                  {business.location}
+                </p>
+
+                <p className="mt-4 flex-1 leading-7 text-slate-600">
+                  {business.description}
+                </p>
+
+                <a
+                  href={business.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 block w-full rounded-2xl bg-cyan-500 px-5 py-4 text-center font-black text-white transition hover:bg-cyan-400"
+                >
+                  Visit Website
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

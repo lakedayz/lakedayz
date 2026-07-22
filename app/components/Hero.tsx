@@ -51,7 +51,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden text-white">
       <Image
-        src="/tablerock.jpg"
+        src="/tbrdam.png"
         alt="Aerial view of Table Rock Lake"
         fill
         priority
@@ -63,15 +63,15 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-slate-950/20" />
 
       {/* Lake conditions */}
-      <div className="absolute left-6 right-6 top-32 z-20 rounded-2xl border border-white/20 bg-slate-950/70 p-4 text-white shadow-2xl backdrop-blur-md md:left-auto md:right-6 md:top-24 md:w-80">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
+      <div className="absolute left-6 right-6 top-32 z-20 rounded-2xl border border-white/20 bg-slate-950/70 p-5 text-white shadow-2xl backdrop-blur-md md:left-auto md:right-6 md:top-24 md:w-80">
+        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
           Table Rock Lake Conditions
         </p>
 
-        <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
+        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 text-center text-sm">
           <div>
             <p className="text-slate-300">Weather</p>
-            <p className="font-bold">
+            <p className="mt-1 font-bold">
               {conditions.airTemp !== null
                 ? `${conditions.airTemp}°F`
                 : "--"}
@@ -82,7 +82,7 @@ export default function Hero() {
 
           <div>
             <p className="text-slate-300">Water Temp</p>
-            <p className="font-bold">
+            <p className="mt-1 font-bold">
               {conditions.waterTemp !== null
                 ? `${conditions.waterTemp}°F`
                 : "--"}
@@ -91,7 +91,7 @@ export default function Hero() {
 
           <div>
             <p className="text-slate-300">Lake Level</p>
-            <p className="font-bold">
+            <p className="mt-1 font-bold">
               {conditions.lakeLevel !== null
                 ? `${conditions.lakeLevel} ft`
                 : "--"}
@@ -100,14 +100,16 @@ export default function Hero() {
 
           <div>
             <p className="text-slate-300">Wind</p>
-            <p className="font-bold">{conditions.wind}</p>
+            <p className="mt-1 font-bold">{conditions.wind}</p>
           </div>
         </div>
 
-        <p className="mt-3 text-xs text-slate-400">Updated recently</p>
+        <p className="mt-4 text-center text-xs text-slate-400">
+          Updated recently
+        </p>
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-28 pt-[28rem] md:py-28">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-28 pt-[31rem] md:py-28">
         <div className="max-w-4xl">
           <p className="mb-5 text-sm font-black uppercase tracking-[0.35em] text-cyan-300">
             Explore. Book. Enjoy.

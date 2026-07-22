@@ -25,12 +25,21 @@ const categories = [
     href: "events",
   },
   {
-    name: "Fuel Docks",
-    image: "/gas.jpg",
-    href: "fuel-docks",
-  },
+  name: "Fuel Docks",
+  image: "/gas.jpg",
+  href: "/fuel-docks",
+},
+{
+  name: "RV Parks & Camping",
+  image: "/rvpark.jpeg",
+  href: "/rv-parks",
+},
+{
+  name: "Stays",
+  image: "/stays.jpeg",
+  href: "/stays",
+},
 ];
-
 export default function Categories() {
   return (
     <section className="bg-slate-50 py-20">
