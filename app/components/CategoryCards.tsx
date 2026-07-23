@@ -1,69 +1,67 @@
 const categories = [
   {
-    name: "Boat Rentals",
+    name: "STAY",
+    image: "/stays.jpeg",
+    href: "/stays",
+  },
+  {
+    name: "RENT",
     image: "/boatrental.jpg",
     href: "/boat-rentals",
   },
   {
-    name: "Marinas",
-    image: "/dock.jpg",
-    href: "/marinas",
-  },
-  {
-    name: "Restaurants",
+    name: "EAT",
     image: "/bell.jpg",
     href: "/restaurants",
   },
   {
-    name: "Fishing",
+    name: "EVENTS",
+    image: "/map.jpg",
+    href: "/events",
+  },
+  {
+    name: "EXPLORE",
+    image: "/hero1.jpg",
+    href: "/businesses",
+  },
+  {
+    name: "MARINAS",
+    image: "/dock.jpg",
+    href: "/marinas",
+  },
+  {
+    name: "FISHING",
     image: "/Fishing_reel.jpg",
     href: "/fishing",
   },
   {
-    name: "Events",
-    image: "/map.jpg",
-    href: "events",
+    name: "FUEL DOCKS",
+    image: "/gas.jpg",
+    href: "/fuel-docks",
   },
   {
-  name: "Fuel Docks",
-  image: "/gas.jpg",
-  href: "/fuel-docks",
-},
-{
-  name: "RV Parks & Camping",
-  image: "/rvpark.jpeg",
-  href: "/rv-parks",
-},
-{
-  name: "Stays",
-  image: "/stays.jpeg",
-  href: "/stays",
-},
+    name: "RV PARKS",
+    image: "/rvpark.jpeg",
+    href: "/rv-parks",
+  },
 ];
+
 export default function Categories() {
   return (
-    <section className="bg-slate-50 py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-4xl font-bold text-slate-900">
-          Explore LakeDayz
-        </h2>
-
-        <p className="mb-10 mt-3 text-slate-600">
-          Everything you need for the perfect day on the water.
-        </p>
-
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
+    <section className="bg-slate-950 px-4 pb-16 pt-8 text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-3 gap-3 sm:gap-5">
           {categories.map((category) => (
             <a
               key={category.name}
               href={category.href}
-              className="relative min-h-[220px] overflow-hidden rounded-3xl bg-cover bg-center shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative min-h-[170px] overflow-hidden rounded-3xl border border-white/40 bg-cover bg-center shadow-xl transition hover:-translate-y-1 hover:shadow-2xl sm:min-h-[220px]"
               style={{
-                backgroundImage: `linear-gradient(rgba(2, 6, 23, 0.35), rgba(2, 6, 23, 0.65)), url(${category.image})`,
+                backgroundImage: `linear-gradient(rgba(2, 6, 23, 0.12), rgba(2, 6, 23, 0.82)), url(${category.image})`,
               }}
             >
-              <div className="absolute inset-0 flex items-end p-6">
-                <h3 className="text-2xl font-bold text-white">
+              <div className="absolute inset-0 flex items-end justify-center p-3">
+                <h3 className="text-center text-sm font-black tracking-wide text-white sm:text-xl">
                   {category.name}
                 </h3>
               </div>
