@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const latitude = 36.64;
   const longitude = -93.34;
@@ -7,147 +9,103 @@ export async function GET() {
   let weather = "Unavailable";
   let airTemp: number | null = null;
   let wind = "Unavailable";
+  let uvIndex: number | null = null;
   let waterTemp: number | null = null;
-  let lakeLevel: number | null = null;
 
-  // LIVE WEATHER + WIND
+  const lakeLevel: number | null = null;
+
+  // WEATHER, WIND, AND UV
   try {
-    const pointsResponse = await fetch(
-      `https://api.weather.gov/points/${latitude},${longitude}`,
+    const weatherResponse = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,uv_index&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago`,
       {
-        headers: {
-          "User-Agent": "LakeDayz (https://lakedayz.org)",
-          Accept: "application/geo+json",
-        },
-        next: { revalidate: 900 },
+        cache: "no-store",
       }
     );
 
-    if (!pointsResponse.ok) {
-      throw new Error(`NWS points failed: ${pointsResponse.status}`);
-    }
+    if (weatherResponse.ok) {
+      const weatherData = await weatherResponse.json();
+      const current = weatherData?.current;
 
-    const pointsData = await pointsResponse.json();
-    const forecastUrl = pointsData.properties?.forecastHourly;
-
-    if (!forecastUrl) {
-      throw new Error("NWS hourly forecast URL not found");
-    }
-
-    const forecastResponse = await fetch(forecastUrl, {
-      headers: {
-        "User-Agent": "LakeDayz (https://lakedayz.org)",
-        Accept: "application/geo+json",
-      },
-      next: { revalidate: 900 },
-    });
-
-    if (!forecastResponse.ok) {
-      throw new Error(`NWS forecast failed: ${forecastResponse.status}`);
-    }
-
-    const forecastData = await forecastResponse.json();
-    const current = forecastData.properties?.periods?.[0];
-
-    if (current) {
-      weather = current.shortForecast ?? weather;
-
-      if (typeof current.temperature === "number") {
-        airTemp = current.temperature;
+      if (current?.temperature_2m !== undefined) {
+        airTemp = Number(current.temperature_2m);
       }
 
-      if (current.windDirection && current.windSpeed) {
-        wind = `${current.windDirection} ${current.windSpeed}`;
+      if (current?.uv_index !== undefined) {
+        uvIndex = Number(current.uv_index);
       }
+
+      if (
+        current?.wind_speed_10m !== undefined &&
+        current?.wind_direction_10m !== undefined
+      ) {
+        wind = `${getWindDirection(
+          Number(current.wind_direction_10m)
+        )} ${Math.round(Number(current.wind_speed_10m))} mph`;
+      }
+
+      weather = getWeatherDescription(current?.weather_code);
     }
   } catch (error) {
-    console.error("Weather fetch failed:", error);
+    console.error("Weather conditions request failed:", error);
   }
 
-  // LIVE TABLE ROCK LAKE WATER TEMP
+  // TABLE ROCK LAKE WATER TEMPERATURE
   try {
-    const waterResponse = await fetch(
-      "https://seatemperature.net/lakes/water-temp-in-table-rock-lake",
+    const waterTempResponse = await fetch(
+      "https://lakemonster.com/lake/MO/Table-Rock-Lake-water-temperature-34",
       {
+        cache: "no-store",
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (compatible; LakeDayz/1.0; +https://lakedayz.org)",
-          Accept: "text/html",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
         },
-        next: { revalidate: 900 },
       }
     );
 
-    if (!waterResponse.ok) {
-      throw new Error(
-        `Water temperature request failed: ${waterResponse.status}`
-      );
-    }
+    if (waterTempResponse.ok) {
+      const html = await waterTempResponse.text();
 
-    const waterHtml = await waterResponse.text();
+      const patterns = [
+        /current[^<]{0,100}water temperature[^0-9]{0,30}([0-9]{2,3}(?:\.[0-9]+)?)\s*°?\s*F/i,
+        /water temperature[^0-9]{0,50}([0-9]{2,3}(?:\.[0-9]+)?)\s*°?\s*F/i,
+        /water[^0-9]{0,20}([0-9]{2,3}(?:\.[0-9]+)?)\s*°/i,
+      ];
 
-    const normalizedWaterText = waterHtml
-      .replace(/<script[\s\S]*?<\/script>/gi, " ")
-      .replace(/<style[\s\S]*?<\/style>/gi, " ")
-      .replace(/<[^>]*>/g, " ")
-      .replace(/&nbsp;/gi, " ")
-      .replace(/&deg;/gi, "°")
-      .replace(/&#176;/gi, "°")
-      .replace(/\s+/g, " ")
-      .trim();
+      for (const pattern of patterns) {
+        const match = html.match(pattern);
 
-    const celsiusMatch = normalizedWaterText.match(
-      /Water Temperature in Table Rock Lake today is\s*([0-9]+(?:\.[0-9]+)?)\s*°?C/i
-    );
+        if (match?.[1]) {
+          const parsedTemp = Number(match[1]);
 
-    if (celsiusMatch) {
-      const celsius = Number(celsiusMatch[1]);
-      waterTemp = Math.round((celsius * 9 / 5 + 32) * 10) / 10;
-    }
-  } catch (error) {
-    console.error("Water temperature fetch failed:", error);
-  }
-
-  // LIVE LAKE LEVEL
-  try {
-    const lakeResponse = await fetch(
-      "https://tablerockfishingintel.com/",
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (compatible; LakeDayz/1.0; +https://lakedayz.org)",
-          Accept: "text/html",
-        },
-        next: { revalidate: 900 },
+          if (
+            Number.isFinite(parsedTemp) &&
+            parsedTemp >= 32 &&
+            parsedTemp <= 100
+          ) {
+            waterTemp = parsedTemp;
+            break;
+          }
+        }
       }
-    );
-
-    if (!lakeResponse.ok) {
-      throw new Error(
-        `Fishing Intel request failed: ${lakeResponse.status}`
+    } else {
+      console.error(
+        "Water temperature request failed:",
+        waterTempResponse.status
       );
     }
-
-    const lakeHtml = await lakeResponse.text();
-
-    const normalizedLakeText = lakeHtml
-      .replace(/<script[\s\S]*?<\/script>/gi, " ")
-      .replace(/<style[\s\S]*?<\/style>/gi, " ")
-      .replace(/<[^>]*>/g, " ")
-      .replace(/&nbsp;/gi, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-
-    const lakeLevelMatch = normalizedLakeText.match(
-      /Lake\s*Level[\s\S]{0,150}?([0-9]{3}(?:\.[0-9]+)?)\s*(?:ft|feet|')/i
-    );
-
-    if (lakeLevelMatch) {
-      lakeLevel = Number(lakeLevelMatch[1]);
-    }
   } catch (error) {
-    console.error("Lake level fetch failed:", error);
+    console.error("Water temperature request failed:", error);
   }
+
+  console.log("LakeDayz conditions:", {
+    weather,
+    airTemp,
+    waterTemp,
+    lakeLevel,
+    wind,
+    uvIndex,
+  });
 
   return NextResponse.json({
     weather,
@@ -155,7 +113,40 @@ export async function GET() {
     waterTemp,
     lakeLevel,
     wind,
-    waterTempLocation: "Table Rock Lake",
+    uvIndex,
     updatedAt: new Date().toISOString(),
   });
+}
+
+function getWeatherDescription(code?: number) {
+  if (code === 0) return "Clear";
+  if (code === 1) return "Mostly Clear";
+  if (code === 2) return "Partly Cloudy";
+  if (code === 3) return "Cloudy";
+  if (code === 45 || code === 48) return "Foggy";
+  if ([51, 53, 55, 56, 57].includes(code ?? -1)) return "Drizzle";
+  if ([61, 63, 65, 66, 67].includes(code ?? -1)) return "Rain";
+  if ([71, 73, 75, 77].includes(code ?? -1)) return "Snow";
+  if ([80, 81, 82].includes(code ?? -1)) return "Showers";
+  if ([85, 86].includes(code ?? -1)) return "Snow Showers";
+  if ([95, 96, 99].includes(code ?? -1)) return "Thunderstorms";
+
+  return "Conditions";
+}
+
+function getWindDirection(degrees: number) {
+  const directions = [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+  ];
+
+  const index = Math.round(degrees / 45) % 8;
+
+  return directions[index];
 }

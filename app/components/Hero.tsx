@@ -9,6 +9,7 @@ type LakeConditions = {
   waterTemp: number | null;
   lakeLevel: number | null;
   wind: string;
+  uvIndex: number | null;
   updatedAt: string;
 };
 
@@ -52,13 +53,14 @@ const lakes = [
   { name: "Stockton Lake", active: false },
 ];
 
-export function Hero() {
+export default function Hero() {
   const [conditions, setConditions] = useState<LakeConditions>({
     weather: "Loading...",
     airTemp: null,
     waterTemp: null,
     lakeLevel: null,
     wind: "Loading...",
+    uvIndex: null,
     updatedAt: "",
   });
 
@@ -82,6 +84,7 @@ export function Hero() {
           waterTemp: data.waterTemp ?? null,
           lakeLevel: data.lakeLevel ?? null,
           wind: data.wind ?? "Unavailable",
+          uvIndex: data.uvIndex ?? null,
           updatedAt: data.updatedAt ?? "",
         });
       })
@@ -94,6 +97,7 @@ export function Hero() {
           waterTemp: null,
           lakeLevel: null,
           wind: "Unavailable",
+          uvIndex: null,
           updatedAt: "",
         });
       });
@@ -198,7 +202,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/10 to-slate-950/70" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-5 pb-8 pt-6 sm:px-8 lg:px-12">
-        {/* Top nav */}
         <div className="relative flex items-center justify-between">
           <button
             onClick={() => setMenuOpen(true)}
@@ -231,7 +234,6 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Main hero text */}
         <div className="mt-24 sm:mt-28">
           <div className="max-w-2xl">
             <h1 className="font-serif text-6xl leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl">
@@ -245,7 +247,6 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Search */}
           <div className="mt-8 max-w-4xl">
             <div className="flex items-center rounded-[28px] bg-white p-2 shadow-2xl">
               <span className="pl-4 pr-3 text-xl text-slate-500">🔍</span>
@@ -255,7 +256,9 @@ export function Hero() {
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 onKeyDown={(event) => {
-                  if (event.key === "Enter") handleSearch();
+                  if (event.key === "Enter") {
+                    handleSearch();
+                  }
                 }}
                 placeholder="Search lakes, towns, activities..."
                 className="min-w-0 flex-1 bg-transparent py-3 text-base text-slate-900 outline-none placeholder:text-slate-500"
@@ -270,7 +273,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Conditions */}
           <div className="mt-5 overflow-hidden rounded-[28px] border border-white/20 bg-slate-950/80 shadow-2xl backdrop-blur-md">
             <div className="grid grid-cols-5">
               <div className="border-r border-white/15 px-2 py-4 text-center">
@@ -288,16 +290,16 @@ export function Hero() {
               </div>
 
               <div className="border-r border-white/15 px-2 py-4 text-center">
-                <div className="text-2xl text-cyan-400">≋</div>
+                <div className="text-2xl">🌞</div>
 
                 <p className="mt-1 text-[9px] font-bold uppercase text-cyan-400">
-                  Water
+                  UV Index
                 </p>
 
                 <p className="mt-1 text-xl font-black">
-                  {conditions.waterTemp !== null
-                    ? `${Math.round(conditions.waterTemp)}°`
-                    : "--°"}
+                  {conditions.uvIndex !== null
+                    ? Math.round(conditions.uvIndex)
+                    : "--"}
                 </p>
               </div>
 
@@ -353,7 +355,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Lake selector */}
       {menuOpen && (
         <div className="fixed inset-0 z-[100] bg-slate-950/70 backdrop-blur-sm">
           <div className="h-full w-[85%] max-w-sm bg-slate-950 p-6 shadow-2xl">
@@ -362,6 +363,7 @@ export function Hero() {
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-400">
                   LakeDayz
                 </p>
+
                 <h2 className="mt-2 text-3xl font-black text-white">
                   Choose your lake
                 </h2>
@@ -402,7 +404,6 @@ export function Hero() {
         </div>
       )}
 
-      {/* Coming soon popup */}
       {comingSoonLake && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/80 px-6 backdrop-blur-sm">
           <div className="w-full max-w-sm rounded-3xl border border-white/15 bg-slate-900 p-8 text-center shadow-2xl">
@@ -414,9 +415,7 @@ export function Hero() {
               {comingSoonLake}
             </h2>
 
-            <p className="mt-3 text-lg text-white/70">
-              Coming soon.
-            </p>
+            <p className="mt-3 text-lg text-white/70">Coming soon.</p>
 
             <button
               onClick={() => setComingSoonLake(null)}

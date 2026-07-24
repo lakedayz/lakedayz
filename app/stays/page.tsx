@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 
 const stays = [
@@ -6,7 +8,7 @@ const stays = [
     type: "Resort & Hotel",
     location: "Branson, Missouri",
     description:
-      "An iconic full-service resort overlooking Table Rock Lake with lake views, dining, spa services, and convenient access to Chateau Marina.",
+      "A full-service resort overlooking Table Rock Lake with lake views, dining, spa services, pools, and convenient access to Branson attractions.",
     website: "https://www.chateauonthelake.com/",
   },
   {
@@ -14,7 +16,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Indian Point, Missouri",
     description:
-      "A family-friendly lakefront resort with spacious nightly rentals, multiple pools, marina access, and easy access to Table Rock Lake.",
+      "A family-friendly lakefront resort with nightly rentals, multiple pools, marina access, and easy access to Silver Dollar City.",
     website: "https://www.stillwatersresort.com/",
   },
   {
@@ -22,7 +24,7 @@ const stays = [
     type: "Condo Resort",
     location: "Indian Point, Missouri",
     description:
-      "Lakefront condo rentals on Table Rock Lake with one- to five-bedroom accommodations, pools, a fishing dock, and resort amenities.",
+      "Lakefront condo rentals with one- to five-bedroom accommodations, pools, a fishing dock, and resort amenities.",
     website: "https://thevillageatindianpoint.com/",
   },
   {
@@ -30,7 +32,7 @@ const stays = [
     type: "Condos, Cabins & Lodges",
     location: "Indian Point, Missouri",
     description:
-      "More than 100 lakefront and lake-view accommodations ranging from condos and cabins to large multi-bedroom lodges.",
+      "Lakefront and lake-view accommodations ranging from condos and cabins to large multi-bedroom lodges.",
     website: "https://tablerockresorts.com/",
   },
   {
@@ -38,7 +40,7 @@ const stays = [
     type: "Condo Resort",
     location: "Indian Point, Missouri",
     description:
-      "Luxury condo accommodations on Table Rock Lake with spacious units located near Silver Dollar City and Branson attractions.",
+      "Luxury condo accommodations on Table Rock Lake with spacious units located near Silver Dollar City and Branson.",
     website: "https://www.bookrockwood.com/",
   },
   {
@@ -46,7 +48,7 @@ const stays = [
     type: "Luxury Resort",
     location: "Ridgedale, Missouri",
     description:
-      "A premier wilderness resort overlooking Table Rock Lake with cabins, cottages, dining, golf, outdoor recreation, and lake activities.",
+      "A premier wilderness resort overlooking Table Rock Lake with cabins, cottages, dining, golf, outdoor recreation, and spa experiences.",
     website: "https://bigcedar.com/",
   },
   {
@@ -54,7 +56,7 @@ const stays = [
     type: "Luxury Lakefront Resort",
     location: "Kimberling City, Missouri",
     description:
-      "A luxury family resort featuring large lakefront vacation homes, resort-style pools, a dock, and extensive family amenities.",
+      "A lakefront family resort featuring large vacation homes, resort-style pools, a dock, and family-friendly amenities.",
     website: "https://www.serenityshores.com/",
   },
   {
@@ -62,7 +64,7 @@ const stays = [
     type: "Hotel, Cabins & Resort",
     location: "Kimberling City, Missouri",
     description:
-      "A full-service Table Rock Lake destination offering hotel rooms, lakefront cabins, marina access, and multiple lodging options.",
+      "A full-service Table Rock Lake destination offering hotel rooms, lakefront cabins, marina access, pools, and recreation.",
     website: "https://staypok.com/",
   },
   {
@@ -78,7 +80,7 @@ const stays = [
     type: "Cabin Resort",
     location: "Kimberling City, Missouri",
     description:
-      "A family-friendly cabin resort within walking distance of Table Rock Lake with a boat dock, pool, playground, and other amenities.",
+      "A family-friendly cabin resort within walking distance of Table Rock Lake with a boat dock, pool, playground, and outdoor amenities.",
     website: "https://www.cedarwoodresort.com/",
   },
   {
@@ -86,7 +88,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Branson West, Missouri",
     description:
-      "A true Table Rock Lake resort with lake-view cottages and a gentle walk from the accommodations directly to the water.",
+      "A Table Rock Lake resort with lake-view cottages and convenient access from the accommodations directly to the water.",
     website: "https://www.theshoreacresresort.com/",
   },
   {
@@ -94,7 +96,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Branson, Missouri",
     description:
-      "A family resort directly on Table Rock Lake with one- to five-bedroom accommodations, swimming and boat docks, and a pool.",
+      "A family resort directly on Table Rock Lake with one- to five-bedroom accommodations, swimming, and boat docks.",
     website: "https://bavarianresort.com/",
   },
   {
@@ -102,7 +104,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Indian Point, Missouri",
     description:
-      "A family-friendly Table Rock Lake resort with multiple accommodation sizes, pools, boat slips, lake recreation, and easy access to Silver Dollar City.",
+      "A family-friendly Table Rock Lake resort with multiple accommodation sizes, pools, boat slips, and lake recreation.",
     website: "https://book.tribesmanresort.com/",
   },
   {
@@ -118,7 +120,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Indian Point, Missouri",
     description:
-      "A Table Rock Lake resort with villas, cabins, and lodges plus boat slips, boat rentals, and easy access to the water.",
+      "A Table Rock Lake resort with villas, cabins, lodges, boat slips, boat rentals, and convenient lake access.",
     website: "https://lakesideresort.com/",
   },
   {
@@ -126,7 +128,7 @@ const stays = [
     type: "Lakefront Resort",
     location: "Galena, Missouri",
     description:
-      "A smaller lakeside retreat with fully furnished accommodations and a covered boat dock on Table Rock Lake.",
+      "A smaller lakeside retreat with furnished accommodations and a covered boat dock on Table Rock Lake.",
     website: "https://resortatcedarhollow.com/",
   },
 ];
@@ -136,24 +138,45 @@ export default function StaysPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
-            Stay Near the Water
-          </p>
+      <section className="relative min-h-[430px] overflow-hidden text-white">
+        <Image
+          src="/stays.jpeg"
+          alt="Lakefront resort near Table Rock Lake"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
-          <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Stays
-          </h1>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-slate-950/45 to-slate-950/90" />
 
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Find resorts, hotels, condos, cabins, and vacation stays with easy
-            access to Table Rock Lake.
-          </p>
+        <div className="relative z-10 mx-auto flex min-h-[430px] max-w-7xl flex-col px-6 pb-12 pt-8 sm:px-8 lg:px-12">
+          <Link
+            href="/"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-white/30 bg-slate-950/45 px-4 py-2 text-sm font-bold text-white shadow-lg backdrop-blur-md transition hover:bg-white hover:text-slate-950"
+          >
+            <span aria-hidden="true">←</span>
+            Back to LakeDayz
+          </Link>
+
+          <div className="mt-auto max-w-2xl">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-cyan-400">
+              Stay near the water
+            </p>
+
+            <h1 className="mt-4 text-5xl font-black sm:text-6xl">
+              Stays
+            </h1>
+
+            <p className="mt-5 max-w-xl text-lg leading-8 text-white/90">
+              Find resorts, hotels, condos, cabins, and vacation stays with
+              easy access to Table Rock Lake.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="px-6 py-12">
+      <section className="px-6 py-12 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8">
             <h2 className="text-3xl font-black text-slate-950">
@@ -166,13 +189,13 @@ export default function StaysPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {stays.map((stay) => (
-              <div
+              <article
                 key={stay.name}
-                className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl"
               >
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-500">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-600">
                   {stay.type}
                 </p>
 
@@ -196,8 +219,18 @@ export default function StaysPage() {
                 >
                   Visit Website
                 </a>
-              </div>
+              </article>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-4 font-black text-slate-800 shadow-sm transition hover:bg-slate-950 hover:text-white"
+            >
+              <span aria-hidden="true">←</span>
+              Back to LakeDayz
+            </Link>
           </div>
         </div>
       </section>
