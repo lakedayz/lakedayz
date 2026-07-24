@@ -15,38 +15,44 @@ type LakeConditions = {
 function WindIcon() {
   return (
     <svg
-      viewBox="0 0 64 64"
-      className="h-8 w-8 text-cyan-400"
+      viewBox="0 0 64 48"
+      className="h-7 w-9 text-cyan-400"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
-        d="M10 24H34C40 24 44 20 44 15C44 11 41 8 37 8C33 8 30 10 28 14"
+        d="M8 14H38C44 14 48 10 48 6"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
       <path
-        d="M10 32H46C52 32 56 28 56 23C56 19 53 16 49 16C45 16 42 18 40 22"
+        d="M8 24H46C52 24 56 20 56 16"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
       <path
-        d="M10 40H30C36 40 40 44 40 49C40 53 37 56 33 56C29 56 26 54 24 50"
+        d="M8 34H32C38 34 42 38 42 42"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   );
 }
 
-export default function Hero() {
+const lakes = [
+  { name: "Table Rock Lake", active: true },
+  { name: "Lake of the Ozarks", active: false },
+  { name: "Beaver Lake", active: false },
+  { name: "Bull Shoals Lake", active: false },
+  { name: "Truman Lake", active: false },
+  { name: "Stockton Lake", active: false },
+];
+
+export function Hero() {
   const [conditions, setConditions] = useState<LakeConditions>({
     weather: "Loading...",
     airTemp: null,
@@ -57,6 +63,8 @@ export default function Hero() {
   });
 
   const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [comingSoonLake, setComingSoonLake] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/lake-conditions")
@@ -64,6 +72,7 @@ export default function Hero() {
         if (!response.ok) {
           throw new Error("Unable to load lake conditions");
         }
+
         return response.json();
       })
       .then((data) => {
@@ -78,6 +87,7 @@ export default function Hero() {
       })
       .catch((error) => {
         console.error("Lake conditions error:", error);
+
         setConditions({
           weather: "Unavailable",
           airTemp: null,
@@ -165,9 +175,17 @@ export default function Hero() {
     window.location.href = "/businesses";
   };
 
+  const handleLakeClick = (lake: { name: string; active: boolean }) => {
+    if (lake.active) {
+      setMenuOpen(false);
+      return;
+    }
+
+    setComingSoonLake(lake.name);
+  };
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      {/* Background image */}
       <Image
         src="/nakedJPG.JPG"
         alt="Aerial view of Table Rock Lake"
@@ -177,15 +195,14 @@ export default function Hero() {
         className="object-cover object-center"
       />
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/10 to-slate-950/70" />
 
-      {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-5 pb-8 pt-6 sm:px-8 lg:px-12">
         {/* Top nav */}
         <div className="relative flex items-center justify-between">
           <button
-            aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Choose lake"
             className="flex h-11 w-11 items-center justify-center text-3xl text-white"
           >
             ☰
@@ -228,7 +245,7 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Search bar */}
+          {/* Search */}
           <div className="mt-8 max-w-4xl">
             <div className="flex items-center rounded-[28px] bg-white p-2 shadow-2xl">
               <span className="pl-4 pr-3 text-xl text-slate-500">🔍</span>
@@ -253,28 +270,30 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Lake conditions */}
+          {/* Conditions */}
           <div className="mt-5 overflow-hidden rounded-[28px] border border-white/20 bg-slate-950/80 shadow-2xl backdrop-blur-md">
             <div className="grid grid-cols-5">
-              {/* Weather */}
               <div className="border-r border-white/15 px-2 py-4 text-center">
                 <div className="text-2xl">☀️</div>
+
                 <p className="mt-1 text-xl font-black">
                   {conditions.airTemp !== null
                     ? `${Math.round(conditions.airTemp)}°`
                     : "--°"}
                 </p>
+
                 <p className="mt-1 text-[9px] font-bold uppercase text-white/75">
                   {conditions.weather}
                 </p>
               </div>
 
-              {/* Water */}
               <div className="border-r border-white/15 px-2 py-4 text-center">
                 <div className="text-2xl text-cyan-400">≋</div>
+
                 <p className="mt-1 text-[9px] font-bold uppercase text-cyan-400">
                   Water
                 </p>
+
                 <p className="mt-1 text-xl font-black">
                   {conditions.waterTemp !== null
                     ? `${Math.round(conditions.waterTemp)}°`
@@ -282,23 +301,25 @@ export default function Hero() {
                 </p>
               </div>
 
-              {/* Wind */}
               <div className="border-r border-white/15 px-2 py-4 text-center">
                 <div className="flex justify-center">
                   <WindIcon />
                 </div>
+
                 <p className="mt-1 text-[9px] font-bold uppercase text-cyan-400">
                   Wind
                 </p>
+
                 <p className="mt-1 text-base font-black">{conditions.wind}</p>
               </div>
 
-              {/* Lake level */}
               <div className="border-r border-white/15 px-2 py-4 text-center">
                 <div className="text-2xl">💧</div>
+
                 <p className="mt-1 text-[9px] font-bold uppercase text-cyan-400">
                   Lake Level
                 </p>
+
                 <p className="mt-1 text-xl font-black">
                   {conditions.lakeLevel !== null
                     ? `${conditions.lakeLevel.toFixed(1)}'`
@@ -306,12 +327,13 @@ export default function Hero() {
                 </p>
               </div>
 
-              {/* Lake temp */}
               <div className="px-2 py-4 text-center">
                 <div className="text-2xl">🌡️</div>
+
                 <p className="mt-1 text-[9px] font-bold uppercase text-cyan-400">
                   Lake Temp
                 </p>
+
                 <p className="mt-1 text-xl font-black">
                   {conditions.waterTemp !== null
                     ? `${Math.round(conditions.waterTemp)}°`
@@ -321,15 +343,90 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Discover more */}
           <div className="mt-5 text-center">
             <div className="text-3xl leading-none">⌄</div>
+
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/85">
               Discover More
             </p>
           </div>
         </div>
       </div>
+
+      {/* Lake selector */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[100] bg-slate-950/70 backdrop-blur-sm">
+          <div className="h-full w-[85%] max-w-sm bg-slate-950 p-6 shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-400">
+                  LakeDayz
+                </p>
+                <h2 className="mt-2 text-3xl font-black text-white">
+                  Choose your lake
+                </h2>
+              </div>
+
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-2xl text-white"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="mt-8 space-y-3">
+              {lakes.map((lake) => (
+                <button
+                  key={lake.name}
+                  onClick={() => handleLakeClick(lake)}
+                  className="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-left transition hover:bg-white/10"
+                >
+                  <div>
+                    <p className="font-bold text-white">{lake.name}</p>
+
+                    <p
+                      className={`mt-1 text-xs font-bold uppercase tracking-wider ${
+                        lake.active ? "text-cyan-400" : "text-white/40"
+                      }`}
+                    >
+                      {lake.active ? "Current Lake" : "Coming Soon"}
+                    </p>
+                  </div>
+
+                  <span className="text-xl text-white/60">›</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Coming soon popup */}
+      {comingSoonLake && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/80 px-6 backdrop-blur-sm">
+          <div className="w-full max-w-sm rounded-3xl border border-white/15 bg-slate-900 p-8 text-center shadow-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-400">
+              LakeDayz
+            </p>
+
+            <h2 className="mt-4 text-3xl font-black text-white">
+              {comingSoonLake}
+            </h2>
+
+            <p className="mt-3 text-lg text-white/70">
+              Coming soon.
+            </p>
+
+            <button
+              onClick={() => setComingSoonLake(null)}
+              className="mt-7 w-full rounded-2xl bg-cyan-500 px-6 py-4 font-black text-white"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
