@@ -27,7 +27,7 @@ export default function CategoryHero({
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/75" />
 
-      <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-between px-6 pb-12 pt-28 text-white">
+      <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-between px-6 pb-12 pt-8 text-white">
         <Link
           href="/"
           className="w-fit rounded-full border border-white/40 bg-black/30 px-5 py-3 text-sm font-bold backdrop-blur-md transition hover:bg-white hover:text-slate-950"

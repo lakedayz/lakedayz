@@ -6,7 +6,7 @@ const categories = [
   },
   {
     name: "RENT",
-    image: "/boatrental.jpg",
+    image: "/statepark12.jpg",
     href: "/boat-rentals",
   },
   {
@@ -16,7 +16,7 @@ const categories = [
   },
   {
     name: "EVENTS",
-    image: "/map.jpg",
+    image: "/tablerock.jpg",
     href: "/events",
   },
   {
@@ -26,7 +26,7 @@ const categories = [
   },
   {
     name: "MARINAS",
-    image: "/dock.jpg",
+    image: "/longcreek.jpeg",
     href: "/marinas",
   },
   {
@@ -36,7 +36,7 @@ const categories = [
   },
   {
     name: "FUEL DOCKS",
-    image: "/gas.jpg",
+    image: "/gaspump.jpg",
     href: "/fuel-docks",
   },
   {

@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import CategoryHero from "../components/CategoryHero";
 
 const fuelDocks = [
   {
@@ -104,22 +105,12 @@ export default function FuelDocksPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
-            Fuel Up on Table Rock Lake
-          </p>
-
-          <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Fuel Docks
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Compare fuel docks around Table Rock Lake, get road directions,
-            or open your marine navigation app for on-water navigation.
-          </p>
-        </div>
-      </section>
+      <CategoryHero
+        eyebrow="Fuel Up on Table Rock Lake"
+        title="Fuel Docks"
+        description="Compare fuel docks around Table Rock Lake, get road directions, or open your marine navigation app for on-water navigation."
+        image="/gaspump.jpg"
+      />
 
       <section className="px-6 py-12">
         <div className="mx-auto max-w-7xl">

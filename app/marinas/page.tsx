@@ -11,7 +11,52 @@ const marinas = [
     description:
       "A large full-service marina inside Table Rock State Park offering boat rentals, slip rentals, fuel, water sports, a marina store, and lake experiences.",
     website: "https://www.stateparkmarina.com/",
-    image: "/statepark12.jpg",
+    image: "/stateparkmarina.jpeg",
+  },
+  {
+    name: "The Harbor Marina",
+    type: "Marina & Marine Services",
+    location: "Indian Point, Missouri",
+    description:
+      "A marina near Silver Dollar City offering boating services, marine sales, and convenient access to the Indian Point area of Table Rock Lake.",
+    website: "https://www.theharbormarina.com/",
+    image: "/theharbor.png",
+  },
+  {
+    name: "Rock Lane Resort & Marina",
+    type: "Resort Marina",
+    location: "Indian Point, Missouri",
+    description:
+      "A lakeside resort marina offering boat rentals, marina services, dining, lodging, and convenient access to Table Rock Lake.",
+    website: "https://rocklane.com/",
+    image: "/rocklanemarina.jpg",
+  },
+  {
+    name: "Cricket Creek Marina",
+    type: "Marina & Boat Rentals",
+    location: "Omaha, Arkansas",
+    description:
+      "A Table Rock Lake marina near the Arkansas side offering pontoons, tritoons, ski boats, fishing boats, towable rentals, and other lake services.",
+    website: "https://www.cricketcreek.com/",
+    image: "/cricketcreek.jpeg",
+  },
+  {
+    name: "Long Creek Marina",
+    type: "Full-Service Marina",
+    location: "Ridgedale, Missouri",
+    description:
+      "A public full-service marina operated by Big Cedar Lodge offering boat and watercraft rentals, watersports equipment, fishing services, guides, lake tours, and a marina store.",
+    website: "https://bigcedar.com/long-creek-marina/",
+    image: "/longcreek.jpeg",
+  },
+  {
+    name: "King's River Marina",
+    type: "Full-Service Marina",
+    location: "Shell Knob, Missouri",
+    description:
+      "A marina serving the Shell Knob and Kings River area with boat slips, fuel, boating supplies, lake access, and other marina services.",
+    website: "https://www.kingsrivermarina.com/",
+    image: "/kingsrivermarinashellknob.jpeg",
   },
   {
     name: "Indian Point Marina",
@@ -50,15 +95,6 @@ const marinas = [
     image: "/dock.jpg",
   },
   {
-    name: "Cricket Creek Marina",
-    type: "Marina & Boat Rentals",
-    location: "Omaha, Arkansas",
-    description:
-      "A Table Rock Lake marina near the Arkansas side offering pontoons, tritoons, ski boats, fishing boats, towable rentals, and other lake services.",
-    website: "https://www.cricketcreek.com/",
-    image: "/dock.jpg",
-  },
-  {
     name: "Campbell Point Marina",
     type: "Full-Service Marina",
     location: "Shell Knob, Missouri",
@@ -66,15 +102,6 @@ const marinas = [
       "A marina serving the Shell Knob area of Table Rock Lake with boating services, slip access, fuel, supplies, and convenient lake access.",
     website: "https://campbellpointmarina.com/",
     image: "/dock.jpg",
-  },
-  {
-    name: "Long Creek Marina",
-    type: "Full-Service Marina",
-    location: "Ridgedale, Missouri",
-    description:
-      "A public full-service marina operated by Big Cedar Lodge offering boat and watercraft rentals, watersports equipment, fishing services, guides, lake tours, and a marina store.",
-    website: "https://bigcedar.com/long-creek-marina/",
-    image: "/longcreek.jpg",
   },
   {
     name: "Big M Marina",
@@ -104,15 +131,6 @@ const marinas = [
     image: "/dock.jpg",
   },
   {
-    name: "The Harbor Marina",
-    type: "Marina & Marine Services",
-    location: "Indian Point, Missouri",
-    description:
-      "A marina near Silver Dollar City offering boating services, marine sales, and convenient access to the Indian Point area of Table Rock Lake.",
-    website: "https://www.theharbormarina.com/",
-    image: "/dock.jpg",
-  },
-  {
     name: "Still Waters Resort Marina",
     type: "Resort Marina",
     location: "Indian Point, Missouri",
@@ -120,15 +138,6 @@ const marinas = [
       "A marina serving Still Waters Resort guests and lake visitors with boat rentals, slips, and convenient access to Table Rock Lake.",
     website: "https://www.stillwatersresort.com/marina",
     image: "/dock.jpg",
-  },
-  {
-    name: "Rock Lane Resort & Marina",
-    type: "Resort Marina",
-    location: "Indian Point, Missouri",
-    description:
-      "A lakeside resort marina offering boat rentals, marina services, dining, lodging, and convenient access to Table Rock Lake.",
-    website: "https://rocklane.com/",
-    image: "/rockl.jpg",
   },
 ];
 

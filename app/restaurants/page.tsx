@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import CategoryHero from "../components/CategoryHero";
 
 const restaurants = [
   {
@@ -48,7 +49,8 @@ const restaurants = [
     location: "Kimberling City Area",
     description:
       "A casual Table Rock Lake dining destination popular with boaters looking for food, drinks, and an easy stop while spending the day on the water.",
-    website: "https://www.visittablerocklake.com/restaurants-on-the-water/",
+    website:
+      "https://www.visittablerocklake.com/restaurants-on-the-water/",
   },
   {
     name: "Goofy Goose Lakeside Bar & Grill",
@@ -56,7 +58,8 @@ const restaurants = [
     location: "Table Rock Lake",
     description:
       "A casual lakeside restaurant and bar serving food and drinks in a relaxed lake atmosphere with convenient access for Table Rock Lake visitors.",
-    website: "https://www.visittablerocklake.com/restaurants-on-the-water/",
+    website:
+      "https://www.visittablerocklake.com/restaurants-on-the-water/",
   },
   {
     name: "Watson's on the Water",
@@ -88,7 +91,8 @@ const restaurants = [
     location: "Table Rock Lake",
     description:
       "A casual lakefront restaurant and general store serving visitors and boaters looking for food, supplies, and a convenient stop near the water.",
-    website: "https://www.visittablerocklake.com/restaurants-on-the-water/",
+    website:
+      "https://www.visittablerocklake.com/restaurants-on-the-water/",
   },
   {
     name: "Shady Taco & Grill",
@@ -96,7 +100,8 @@ const restaurants = [
     location: "Indian Point, Missouri",
     description:
       "A relaxed Indian Point dining spot serving tacos and casual food with a lake-area atmosphere and live music events.",
-    website: "https://www.facebook.com/p/Shady-Taco-Grill-100064202498013/",
+    website:
+      "https://www.facebook.com/p/Shady-Taco-Grill-100064202498013/",
   },
   {
     name: "Chateau Grille",
@@ -121,22 +126,12 @@ export default function RestaurantsPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
-            Eat Around Table Rock Lake
-          </p>
-
-          <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Restaurants
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Find boat-to restaurants, marina dining, lakefront bars, pizza,
-            casual food, and destination restaurants around Table Rock Lake.
-          </p>
-        </div>
-      </section>
+      <CategoryHero
+        eyebrow="Eat Around Table Rock Lake"
+        title="Restaurants"
+        description="Find boat-to restaurants, marina dining, lakefront bars, pizza, casual food, and destination restaurants around Table Rock Lake."
+        image="/bell.jpg"
+      />
 
       <section className="px-6 py-12">
         <div className="mx-auto max-w-7xl">
