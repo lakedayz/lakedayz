@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import CategoryHero from "../components/CategoryHero";
 
 const events = [
   {
@@ -8,8 +9,7 @@ const events = [
     location: "Branson Hillside Hotel & Theatre",
     description:
       "A recurring summer cornhole competition in Branson running through late August.",
-    website:
-      "https://www.explorebranson.com/events-branson/",
+    website: "https://www.explorebranson.com/events-branson/",
   },
   {
     name: "Branson Farmers Market at Branson Landing",
@@ -18,8 +18,7 @@ const events = [
     location: "Branson Landing",
     description:
       "A recurring farmers market featuring local vendors, products, and seasonal goods near the Branson waterfront.",
-    website:
-      "https://www.explorebranson.com/events-branson/",
+    website: "https://www.explorebranson.com/events-branson/",
   },
   {
     name: "Farmers Market & Summer Street Fair",
@@ -28,8 +27,7 @@ const events = [
     location: "Branson Area",
     description:
       "A recurring seasonal market and street fair offering shopping, local vendors, and summer activities.",
-    website:
-      "https://www.explorebranson.com/events-branson/",
+    website: "https://www.explorebranson.com/events-branson/",
   },
   {
     name: "Avenged Sevenfold & Good Charlotte",
@@ -58,8 +56,7 @@ const events = [
     location: "Stone County Event Center",
     description:
       "A family-friendly garden tractor pull hosted at the Stone County Event Center.",
-    website:
-      "https://business.visittablerocklake.com/events/calendar",
+    website: "https://business.visittablerocklake.com/events/calendar",
   },
   {
     name: "Creekside Market - Crane",
@@ -68,8 +65,7 @@ const events = [
     location: "Crane, Missouri",
     description:
       "An evening community market featuring local farmers, makers, and cottage-industry vendors.",
-    website:
-      "https://business.visittablerocklake.com/events/calendar",
+    website: "https://business.visittablerocklake.com/events/calendar",
   },
   {
     name: "Big Cedar Lodge Activity & Event Calendar",
@@ -78,8 +74,7 @@ const events = [
     location: "Big Cedar Lodge",
     description:
       "Seasonal events, lake cruises, family activities, dining experiences, and special events throughout the Big Cedar Lodge property.",
-    website:
-      "https://bigcedar.com/events/",
+    website: "https://bigcedar.com/events/",
   },
   {
     name: "Silver Dollar City Summer Celebration",
@@ -98,22 +93,12 @@ export default function EventsPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
-            What&apos;s Happening Around the Lake
-          </p>
-
-          <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Events
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Find concerts, lake events, festivals, markets, tournaments, and
-            seasonal activities happening around Table Rock Lake.
-          </p>
-        </div>
-      </section>
+      <CategoryHero
+        eyebrow="What's Happening Around the Lake"
+        title="Events"
+        description="Find concerts, lake events, festivals, markets, tournaments, and seasonal activities happening around Table Rock Lake."
+        image="/tablerock.jpg"
+      />
 
       <section className="px-6 py-12">
         <div className="mx-auto max-w-7xl">
@@ -143,9 +128,7 @@ export default function EventsPage() {
                   {event.name}
                 </h2>
 
-                <p className="mt-3 font-black text-cyan-600">
-                  {event.date}
-                </p>
+                <p className="mt-3 font-black text-cyan-600">{event.date}</p>
 
                 <p className="mt-2 font-semibold text-slate-500">
                   {event.location}

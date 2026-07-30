@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import CategoryHero from "../components/CategoryHero";
 
 const businesses = [
   {
@@ -106,23 +107,12 @@ export default function BusinessesPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
 
-      <section className="bg-slate-950 px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan-400">
-            Discover Local
-          </p>
-
-          <h1 className="mt-4 text-4xl font-black sm:text-6xl">
-            Find Trusted Lake Businesses
-          </h1>
-
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-            Find boat repair, marine service, boat sales, storage, propeller
-            repair, dock builders, boat lift companies, and other businesses
-            serving the Table Rock Lake community.
-          </p>
-        </div>
-      </section>
+      <CategoryHero
+        eyebrow="Discover Local"
+        title="Find Trusted Lake Businesses"
+        description="Find boat repair, marine service, boat sales, storage, propeller repair, dock builders, boat lift companies, and other businesses serving the Table Rock Lake community."
+        image="/tbrdam.png"
+      />
 
       <section className="px-6 py-12">
         <div className="mx-auto max-w-7xl">
